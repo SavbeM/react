@@ -1,8 +1,17 @@
 .filter-container{
+    display: flex;
+    justify-content: space-between;
+    max-width: 800px;
+    margin: 0 auto;
     text-align: center;
     padding: 0px 20vh;
     
 }
+
+.filter-item{
+    text-align: center;
+}
+
 input[type=radio]{
     margin-left:10px;
     margin-right:5px;
@@ -26,6 +35,16 @@ input[type=radio]{
     border: none;
     background-color: #075270; 
     color:#fff;
+    border-radius: 20px;
+}
+
+.active-button{
+    height: 5.5vh;
+    padding: 5px 10px;
+    margin: 5px;
+    background-color: #e9fcff;
+    border: #075270 1px solid;
+    color: #047ea3;
     border-radius: 20px;
 }
 
