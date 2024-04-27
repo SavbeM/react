@@ -1,9 +1,10 @@
 import './ProductFilter.css';
 import {useEffect, useState} from "react";
+import {createParams, filtrateProducts} from "../../../utils/utils";
 
-function ProductFilter() {
+function ProductFilter({products,  setFiltratedProducts}) {
     const [isActive, setIsActive] = useState([false, false, false, false, false]);
-
+    const [isChecked, setIsChecked] = useState([true, false, false, false])
     const buttonClass = {
         default: "custom-button",
         active: "active-button"
@@ -20,15 +21,23 @@ function ProductFilter() {
     ]
 
     const typeCategory = [
-        {name: "Tenisky"},
-        {name: "Komfortná obuv"},
-        {name: "Formálna obuv"},
-        {name: "Obuv na doma"},
-        {name: "Outdoorová obuv"}
+        {name: "Tenisky", value: "sport"},
+        {name: "Komfortná obuv", value: "casual"},
+        {name: "Formálna obuv", value: "formal"},
+        {name: "Obuv na doma", value: "home"},
+        {name: "Outdoorová obuv", value: "outdoor"}
     ]
+
     useEffect(() => {
         setButtonStyle(isActive.map(isActive => isActive ? buttonClass.active : buttonClass.default));
-    }, [isActive]);
+    }, [isActive, buttonClass]);
+
+    useEffect(() => {
+        const params = createParams(genderCategory, typeCategory, [...isChecked], [...isActive]);
+        const filtrated = filtrateProducts(products, params);
+        setFiltratedProducts(filtrated);
+
+    },[isActive, isChecked])
 
     const handleButton = (index) => {
         setIsActive(prevState => {
@@ -36,7 +45,14 @@ function ProductFilter() {
             newState[index] = !newState[index];
             return newState;
         });
+    }
 
+    const handleRadio = (index) => {
+        setIsChecked(prevState => {
+            const newState = prevState.map(() => false);
+            newState[index] = true;
+            return newState;
+        })
     }
 
     return (
@@ -49,7 +65,9 @@ function ProductFilter() {
                             <input
                                 type="radio"
                                 name="filter"
+                                checked={isChecked[index]}
                                 value={category.value}
+                                onChange={() => handleRadio(index)}
                             />
 
                         </div>

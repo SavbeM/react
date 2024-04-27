@@ -1,6 +1,5 @@
 
 
-
 const products= [
     {
       id: 1,
@@ -290,5 +289,12 @@ const products= [
   ];
 
   export function getProducts(){
-    return products;
+    return new Promise((resolve, reject) => {
+        if (products){
+          resolve(products);
+        }
+        else {
+          reject(new Error("Product list is empty"))
+        }
+    })
   }
