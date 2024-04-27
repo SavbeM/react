@@ -35,6 +35,7 @@ input[type=radio]{
     border: none;
     background-color: #075270; 
     color:#fff;
+    cursor: pointer;
     border-radius: 20px;
 }
 
@@ -42,7 +43,8 @@ input[type=radio]{
     height: 5.5vh;
     padding: 5px 10px;
     margin: 5px;
-    background-color: #e9fcff;
+    cursor: pointer;
+    background-color: #a0d8ef;
     border: #075270 1px solid;
     color: #047ea3;
     border-radius: 20px;
@@ -52,4 +54,10 @@ input[type=radio]{
 background-color: #e9fcff;
 color: #047ea3;
 border: #075270 1px solid;
+}
+
+.active-button:hover{
+    background-color: #e9fcff;
+    color: #047ea3;
+    border: #075270 1px solid;
 }

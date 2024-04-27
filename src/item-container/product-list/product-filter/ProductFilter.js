@@ -1,5 +1,5 @@
 import './ProductFilter.css';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 function ProductFilter() {
     const [isActive, setIsActive] = useState([false, false, false, false, false]);
@@ -26,15 +26,18 @@ function ProductFilter() {
         {name: "Obuv na doma"},
         {name: "Outdoorová obuv"}
     ]
+    useEffect(() => {
+        setButtonStyle(isActive.map(isActive => isActive ? buttonClass.active : buttonClass.default));
+    }, [isActive]);
 
     const handleButton = (index) => {
-        setIsActive(prevState => [...prevState, prevState[index] = !prevState[index]]);
-        setButtonStyle(prevState => [...prevState, prevState[index] = isActive[index] ? buttonClass.active : buttonClass.default]);
-        console.log(isActive)
-        console.log(buttonStyle)
+        setIsActive(prevState => {
+            const newState = [...prevState];
+            newState[index] = !newState[index];
+            return newState;
+        });
+
     }
-
-
 
     return (
         <>
