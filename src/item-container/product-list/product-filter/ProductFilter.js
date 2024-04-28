@@ -30,7 +30,7 @@ function ProductFilter({products,  setFiltratedProducts}) {
 
     useEffect(() => {
         setButtonStyle(isActive.map(isActive => isActive ? buttonClass.active : buttonClass.default));
-    }, [isActive, buttonClass]);
+    }, [isActive]);
 
     useEffect(() => {
         const params = createParams(genderCategory, typeCategory, [...isChecked], [...isActive]);
