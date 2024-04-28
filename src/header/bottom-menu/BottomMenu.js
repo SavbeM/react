@@ -1,14 +1,18 @@
-import { Link } from 'react-router-dom';
+
 import './BottomMenu.css';
+import {Link} from "react-router-dom";
+
 
 function BottomMenu(){
     return(
+
         <div className="bottom-text">
-            <a href="/#">Domov</a>
-            <a href="/#">Produkty</a>
-            <a href="/#">O nás</a>
-            <a href="/#">Kontakty</a>
+            <Link  to='/'>Domov</Link>
+            <Link to="/product-list">Produkty</Link>
+            <Link to="/about">O nás</Link>
+            <Link to="/contacts">Kontakty</Link>
         </div>
+
     );
 }
 
